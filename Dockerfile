@@ -21,7 +21,8 @@ CMD ["sh"]
 
 # PRODUCTION TARGET PROFILE
 FROM base AS production
+ENV NODE_ENV=production
 COPY --from=build /opt/app/dist /opt/app/dist
 COPY package*.json ./
-RUN npm install --production
+RUN npm install && npm prune --production
 CMD ["sh"]

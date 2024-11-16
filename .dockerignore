@@ -12,3 +12,6 @@ Dockerfile
 *.json
 
 !data/samples/**/*.json
+!package.json
+!package-lock.json
+!tsconfig.json
