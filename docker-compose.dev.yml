@@ -1,0 +1,15 @@
+services:
+  ciatph.json-excel-dev:
+    container_name: ciatph-json-excel-dev
+    image: ciatph/excel-exporter:dev
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    volumes:
+      - .:/opt/app
+      - /opt/app/node_modules
+    ports:
+      - "9229:9229"
+    stdin_open: true
+    tty: true

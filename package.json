@@ -1,0 +1,28 @@
+{
+  "name": "json-to-excel",
+  "version": "1.0.0",
+  "description": "Node script that converts historical 10-day weather forecast JSON data to Excel files.",
+  "scripts": {
+    "start": "node dist/scripts/export.js",
+    "transpile": "tsc -p tsconfig.json",
+    "debug": "npm run transpile && npm run start",
+    "debug:container": "export IS_DOCKER=true && npm run transpile && node --inspect=0.0.0.0:9229 dist/scripts/export.js",
+    "start:container": "export IS_DOCKER=true && node --inspect=0.0.0.0:9229 dist/scripts/export.js",
+    "lint": "eslint \"src/**/*.ts\"",
+    "lint:fix": "eslint \"src/**/*.ts\" --fix"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.14.0",
+    "@types/node": "^22.9.0",
+    "eslint": "^9.14.0",
+    "globals": "^15.12.0",
+    "typescript": "^5.6.3",
+    "typescript-eslint": "^8.14.0"
+  }
+}

@@ -1,0 +1,14 @@
+node_modules/
+dist/
+output/
+data/**/*.json
+.vscode
+.dockerignore
+Dockerfile
+*.zip
+*.rar
+*.tgz
+*.txt
+*.json
+
+!data/samples/**/*.json
