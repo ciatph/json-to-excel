@@ -1,7 +1,7 @@
 services:
   ciatph.json-excel-dev:
     container_name: ciatph-json-excel-dev
-    image: ciatph/excel-exporter:dev
+    image: ciatphdev/json-to-excel:dev
     build:
       context: .
       dockerfile: Dockerfile
