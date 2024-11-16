@@ -18,6 +18,7 @@ Node script that exports historical 10-day weather forecast JSON data to Excel f
 
 - [Requirements](#requirements)
 - [Installation and Usage](#installation-and-usage)
+   - [Using the Pre-built Docker Image](#using-the-pre-built-docker-image)
 - [Available Scripts](#available-scripts)
 - [Debugging with Docker](#debugging-with-docker)
 - [Data Description](#data-description)
@@ -49,8 +50,22 @@ Node script that exports historical 10-day weather forecast JSON data to Excel f
       > **INFO:** only the `"npm start"` and `"npm run start:container"` scripts are available on the production build
 
       ```
-      docker run -it --rm -v %cd%\data:/opt/app/data -v %cd%\output:/opt/app/output ciatph/excel-exporter npm run <AVAILABLE_SCRIPT>
+      # Run the JSON to EXCEL script
+      docker run -it --rm -v %cd%\data:/opt/app/data -v %cd%\output:/opt/app/output ciatphdev/json-to-excel
+
+      # Alternate option
+      docker run -it --rm -v %cd%\data:/opt/app/data -v %cd%\output:/opt/app/output ciatphdev/json-to-excel npm run <AVAILABLE_SCRIPT>
       ```
+
+### Using the Pre-built Docker Image
+
+This repository deploys the latest production Docker image to Docker Hub on the creation of new Release/Tags from the master branch. Follow the steps to use the pre-built Docker image.
+
+1. Pull the Docker image.<br>
+`docker pull ciatphdev/json-to-excel`
+2. Put JSON data under a directory. See [Installation and Usage - step #3](#installation-and-usage) for reference.
+3. Run the export script. See [Installation and Usage - step #4](#installation-and-usage) for reference.<br>
+`docker run -it --rm -v %cd%\data:/opt/app/data -v %cd%\output:/opt/app/output ciatphdev/json-to-excel`
 
 ## Available Scripts
 
