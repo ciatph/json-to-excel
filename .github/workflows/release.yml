@@ -6,14 +6,11 @@ name: Publish to Docker Hub
 on:
   release:
     types: [published]
-  push:
-    branches-ignore:
-      - 'master'
 
 jobs:
   run-tests:
     name: Run Tests
-    # if: github.event.release.target_commitish == 'main'
+    if: github.event.release.target_commitish == 'main'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the repository
@@ -46,7 +43,7 @@ jobs:
 
   docker-build-push:
     name: Push Production Image
-    # if: github.event.release.target_commitish == 'main' && vars.DOCKERHUB_USERNAME != ''
+    if: github.event.release.target_commitish == 'main' && vars.DOCKERHUB_USERNAME != ''
     runs-on: ubuntu-latest
     needs: run-tests
     steps:
