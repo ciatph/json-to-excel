@@ -25,4 +25,4 @@ ENV NODE_ENV=production
 COPY --from=build /opt/app/dist /opt/app/dist
 COPY package*.json ./
 RUN npm install && npm prune --production
-CMD ["sh"]
+CMD ["npm", "start"]

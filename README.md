@@ -49,6 +49,10 @@ Node script that exports historical 10-day weather forecast JSON data to Excel f
       > **INFO:** only the `"npm start"` and `"npm run start:container"` scripts are available on the production build
 
       ```
+      # Run the JSON to EXCEL script
+      docker run -it --rm -v %cd%\data:/opt/app/data -v %cd%\output:/opt/app/output ciatphdev/json-to-excel
+
+      # Alternate option
       docker run -it --rm -v %cd%\data:/opt/app/data -v %cd%\output:/opt/app/output ciatphdev/json-to-excel npm run <AVAILABLE_SCRIPT>
       ```
 
