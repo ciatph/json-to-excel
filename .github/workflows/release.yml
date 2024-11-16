@@ -1,5 +1,4 @@
-# This workflow publishes a NodeJS package to npm when a release is created
-# It also deploys the "latest" and tag development Docker image to Docker Hub
+# This workflow deploys the "latest" production (transpiled) Docker image to Docker Hub
 
 name: Publish to Docker Hub
 
