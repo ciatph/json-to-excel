@@ -5,13 +5,10 @@ on:
   schedule:
     # Runs "At 00:00 on day-of-month 1 in every month."
     - cron: '0 0 1 */1 *'
-  push:
-    branches-ignore:
-      - 'main'
 
 jobs:
   pull-images:
-    name: Pull Development Image
+    name: Pull Production Image
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the repository
