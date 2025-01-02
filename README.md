@@ -37,8 +37,22 @@ Node script that exports historical 10-day weather forecast JSON data to Excel f
       docker compose -f docker-compose.prod.yml build
       ```
 
-3. Put the weather forecast data JSON files inside the **/data** directory.
-   > **INFO:** These files should follow uniform data and structure, following the `TendayHistoricalItem` TS type or the `TendayHistoricalItemSchema` zod schema. View the `/data/samples/sample_response.json` for example and the [Data Description](#data-description) section for more information.
+3. Put the weather forecast data JSON files inside a target directory, for example, the **/data** directory.
+   > **INFO:** These files should follow uniform data and structure, following the `TendayHistoricalItem` TS type or the `TendayHistoricalItemSchema` zod schema. View the `/data/samples/sample_response.json` file and the [Data Description](#data-description) section for more information about its structure and format.
+
+   ```
+   .
+   ├── json-to-excel
+   │   ├── data
+   │   ├───── json_data_01.json
+   │   ├───── json_data_02.json
+   │   ├───── json_data_03.json
+   │   ├───── ...
+   │   ├── output
+   │   ├───── ...
+   ```
+
+
 
 4. Run the [Available Scripts](#available-scripts).
    - Example using **Node**
@@ -49,11 +63,13 @@ Node script that exports historical 10-day weather forecast JSON data to Excel f
    - Example using **Docker** (in Windows):
       > **INFO:** only the `"npm start"` and `"npm run start:container"` scripts are available on the production build
 
+      This command binds volume mounts from the host to Docker. The **/data** directory contains the input JSON files from **step # 2**. The script will generate Excel files under the **/output** directory.
+
       ```
-      # Run the JSON to EXCEL script
+      # Run the JSON to EXCEL script (On Windows OS Command Prompt)
       docker run -it --rm -v %cd%\data:/opt/app/data -v %cd%\output:/opt/app/output ciatphdev/json-to-excel
 
-      # Alternate option
+      # Alternate option (On Windows OS Command Prompt)
       docker run -it --rm -v %cd%\data:/opt/app/data -v %cd%\output:/opt/app/output ciatphdev/json-to-excel npm run <AVAILABLE_SCRIPT>
       ```
 
@@ -65,7 +81,14 @@ This repository deploys the latest production Docker image to Docker Hub on the 
 `docker pull ciatphdev/json-to-excel`
 2. Put JSON data under a directory. See [Installation and Usage - step #3](#installation-and-usage) for reference.
 3. Run the export script. See [Installation and Usage - step #4](#installation-and-usage) for reference.<br>
-`docker run -it --rm -v %cd%\data:/opt/app/data -v %cd%\output:/opt/app/output ciatphdev/json-to-excel`
+
+   ```
+   # On Linux OS
+   docker run -it --rm -v $(pwd)/data:/opt/app/data -v $(pwd)/output:/opt/app/output ciatphdev/json-to-excel
+
+   # On Windows OS (Command Prompt)
+   docker run -it --rm -v %cd%\data:/opt/app/data -v %cd%\output:/opt/app/output ciatphdev/json-to-excel
+   ```
 
 ## Available Scripts
 
