@@ -1,6 +1,6 @@
 {
   "name": "json-to-excel",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Node script that converts historical 10-day weather forecast JSON data to Excel files.",
   "scripts": {
     "start": "node dist/scripts/export.js",
